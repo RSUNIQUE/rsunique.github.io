@@ -388,14 +388,12 @@
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
-      dynamicBullets: true,  // Adds dynamic bullet pagination
     },
     navigation: {
       nextEl: '.icon-arrow-right',
       prevEl: '.icon-arrow-left',
     },
     loop: true,  // Enables continuous loop on all screen sizes
-    loopAdditionalSlides: 1,  // Ensures the loop is smooth by preloading one slide
     breakpoints: {
       768: {
         slidesPerView: 3,
@@ -424,13 +422,10 @@
           document.querySelector('.icon-arrow-right').style.display = 'block';
         }
       },
-      slideChange: function () {
-        // Update pagination when slide changes
-        this.update();
-      },
     },
   });
 </script>
+
 
 
 <!-- Custom CSS -->
