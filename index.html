@@ -383,50 +383,55 @@
 <!-- Swiper.js & CSS -->
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-
 <script>
- var swiper = new Swiper('.main-swiper', {
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
-  navigation: {
-    nextEl: '.icon-arrow-right',
-    prevEl: '.icon-arrow-left',
-  },
-   loop: true,
-  breakpoints: {
-    768: {
-      slidesPerView: 3,
-      spaceBetween: 20,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
+  var swiper = new Swiper('.main-swiper', {
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      dynamicBullets: true,  // Adds dynamic bullet pagination
+    },
+    navigation: {
+      nextEl: '.icon-arrow-right',
+      prevEl: '.icon-arrow-left',
+    },
+    loop: true,  // Enables continuous loop on all screen sizes
+    loopAdditionalSlides: 1,  // Ensures the loop is smooth by preloading one slide
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: false,  // Disables arrows on tablet and mobile
       },
-      navigation: false,  // Disables arrows on tablet and mobile
-    },
-    320: {
-      slidesPerView: 1,
-      spaceBetween: 10,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: false,  // Disables arrows on mobile
       },
-      navigation: false,  // Disables arrows on mobile
     },
-  },
-  // Always show navigation arrows on large screens
-  on: {
-    init: function () {
-      if (window.innerWidth > 1024) {
-        document.querySelector('.icon-arrow-left').style.display = 'block';
-        document.querySelector('.icon-arrow-right').style.display = 'block';
-      }
+    // Always show navigation arrows on large screens
+    on: {
+      init: function () {
+        if (window.innerWidth > 1024) {
+          document.querySelector('.icon-arrow-left').style.display = 'block';
+          document.querySelector('.icon-arrow-right').style.display = 'block';
+        }
+      },
+      slideChange: function () {
+        // Update pagination when slide changes
+        this.update();
+      },
     },
-  },
-});
-
+  });
 </script>
+
 
 <!-- Custom CSS -->
 <style>
